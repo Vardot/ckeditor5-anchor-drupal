@@ -3,7 +3,9 @@ CKEditor5 Anchor Drupal
 
 This package implements the anchor feature for CKEditor 5. It allows inserting anchor elements (ID field) into the edited content and offers the UI to create and edit them.
 
-This is a Drupal-adapted fork of [the original plugin by bvedad](https://github.com/northernco/ckeditor5-anchor-drupal). 
+This is a Drupal-adapted fork of [the original plugin by Northern Commerce](https://github.com/northernco/ckeditor5-anchor-drupal).
+
+Packaged to be used with composer directly in Drupal, and maintained and supported for the [CKEditor Anchor Link](https://www.drupal.org/project/anchor_link) module.
 
 
 ## Install with Composer
