@@ -8,7 +8,7 @@ This is a Drupal-adapted fork of [the original plugin by bvedad](https://github.
 
 ## Install with Composer
 ```
-composer require vardot/ckeditor5-anchor-drupal:~2.0
+composer require vardot/ckeditor5-anchor-drupal:~1.0
 ```
 
 ## Table of contents
