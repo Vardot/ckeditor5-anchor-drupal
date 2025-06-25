@@ -1,0 +1,23 @@
+{
+  "name": "vardot/ckeditor5-anchor-drupal",
+  "homepage": "https://github.com/vardot/ckeditor5-anchor-drupal",
+  "description": "Anchor feature for CKEditor 5, adapted for Drupal",
+  "type": "drupal-library",
+  "authors": [
+    {
+      "name": "Vardot",
+      "homepage": "https://github.com/vardot",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/anchor_link",
+    "source": "http://cgit.drupalcode.org/anchor_link"
+  },
+  "keywords": [
+    "plugin",
+    "ckeditor5",
+    "Drupal"
+  ],
+  "license": "MIT"
+}
