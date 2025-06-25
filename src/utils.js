@@ -7,7 +7,7 @@
  * @module anchor/utils
  */
 
-import { upperFirst } from 'lodash-es';
+import { upperFirst } from 'es-toolkit/string';
 import { toWidget } from "ckeditor5/src/widget";
 
 const ATTRIBUTE_WHITESPACES = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex

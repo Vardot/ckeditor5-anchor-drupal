@@ -22,8 +22,7 @@ import { FocusTracker } from 'ckeditor5/src/utils';
 import { FocusCycler } from 'ckeditor5/src/ui';
 import { KeystrokeHandler } from 'ckeditor5/src/utils';
 
-import checkIcon from '@ckeditor/ckeditor5-core/theme/icons/check.svg';
-import cancelIcon from '@ckeditor/ckeditor5-core/theme/icons/cancel.svg';
+import { IconCancel, IconCheck } from '@ckeditor/ckeditor5-icons';
 import '../../theme/anchorform.css';
 import '@ckeditor/ckeditor5-ui/theme/components/responsive-form/responsiveform.css';
 
@@ -77,7 +76,7 @@ export default class AnchorFormView extends View {
 		 *
 		 * @member {module:ui/button/buttonview~ButtonView}
 		 */
-		this.saveButtonView = this._createButton( t( 'Save' ), checkIcon, 'ck-button-save' );
+		this.saveButtonView = this._createButton( t( 'Save' ), IconCheck, 'ck-button-save' );
 		this.saveButtonView.type = 'submit';
 
 		/**
@@ -85,7 +84,7 @@ export default class AnchorFormView extends View {
 		 *
 		 * @member {module:ui/button/buttonview~ButtonView}
 		 */
-		this.cancelButtonView = this._createButton( t( 'Cancel' ), cancelIcon, 'ck-button-cancel', 'cancel' );
+		this.cancelButtonView = this._createButton( t( 'Cancel' ), IconCancel, 'ck-button-cancel', 'cancel' );
 
 		/**
 		 * A collection of {@link module:ui/button/switchbuttonview~SwitchButtonView},

@@ -17,7 +17,7 @@ import { FocusCycler } from 'ckeditor5/src/ui';
 import { KeystrokeHandler } from 'ckeditor5/src/utils';
 
 import unanchorIcon from '../../theme/icons/unanchor.svg';
-import { icons } from 'ckeditor5/src/core';
+import { IconPencil } from '@ckeditor/ckeditor5-icons';
 import '../../theme/anchoractions.css';
 import '@ckeditor/ckeditor5-ui/theme/components/responsive-form/responsiveform.css';
 
@@ -64,7 +64,7 @@ export default class AnchorActionsView extends View {
 		 *
 		 * @member {module:ui/button/buttonview~ButtonView}
 		 */
-		this.editButtonView = this._createButton( t( 'Edit anchor' ), icons.pencil, 'edit' );
+		this.editButtonView = this._createButton( t( 'Edit anchor' ), IconPencil, 'edit' );
 
 		/**
 		 * A collection of views that can be focused in the view.
