@@ -23,5 +23,5 @@
     "drupal/core": ">=10.5 || >=11.2"
   },
   "license": "MIT",
-  "version": "2.0.2"
+  "version": "2.0.x-dev"
 }
