@@ -19,6 +19,9 @@
     "ckeditor5",
     "Drupal"
   ],
+  "require": {
+    "drupal/core": "^9 || <=10.4 || <=11.1"
+  },
   "license": "MIT",
   "version": "1.0.x-dev"
 }
