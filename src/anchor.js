@@ -10,7 +10,6 @@
 import { Plugin } from 'ckeditor5/src/core';
 import AnchorEditing from './anchorediting';
 import AnchorUI from './anchorui';
-import AutoAnchor from './autoanchor';
 
 /**
  * The anchor plugin.
@@ -25,7 +24,7 @@ export default class Anchor extends Plugin {
 	 * @inheritDoc
 	 */
 	static get requires() {
-		return [ AnchorEditing, AnchorUI, AutoAnchor ];
+		return [ AnchorEditing, AnchorUI];
 	}
 
 	/**
