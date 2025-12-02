@@ -9,16 +9,14 @@
 
 import { Plugin } from 'ckeditor5/src/core';
 import { MouseObserver } from 'ckeditor5/src/engine';
-import { TwoStepCaretMovement } from 'ckeditor5/src/typing';
-import { inlineHighlight } from 'ckeditor5/src/typing';
-import { Input } from 'ckeditor5/src/typing';
+import { inlineHighlight, Input, TwoStepCaretMovement } from 'ckeditor5/src/typing';
 import { Clipboard } from 'ckeditor5/src/clipboard';
 import AnchorCommand from './anchorcommand';
 import UnanchorCommand from './unanchorcommand';
 import ManualDecorator from './utils/manualdecorator';
 import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange';
 import { keyCodes } from '@ckeditor/ckeditor5-utils/src/keyboard';
-import { viewToModelPositionOutsideModelElement } from "ckeditor5/src/widget";
+import { viewToModelPositionOutsideModelElement } from 'ckeditor5/src/widget';
 
 import {
 	createAnchorElement,
@@ -78,60 +76,60 @@ export default class AnchorEditing extends Plugin {
 
 		// Allow anchor attribute on all inline nodes.
 		editor.model.schema.extend( '$text', { allowAttributes: 'anchorId' } );
-		editor.model.schema.register('anchor', {
+		editor.model.schema.register( 'anchor', {
 			allowContentOf: '$inlineObject',
 			allowWhere: '$inlineObject',
 			inheritTypesFrom: '$inlineObject',
 			allowAttributes: [ 'class', 'id', 'anchorId', 'name' ]
-		});
+		} );
 
 		editor.conversion.for( 'dataDowncast' )
 			.attributeToElement( {
 				model: {
 					name: '$text',
-					key: 'anchorId',
+					key: 'anchorId'
 				},
-				view: createAnchorElement,
-			});
-		editor.conversion.for('dataDowncast').elementToElement({
+				view: createAnchorElement
+			} );
+		editor.conversion.for( 'dataDowncast' ).elementToElement( {
 			model: 'anchor',
-			view: (modelItem, viewWriter) => {
-				return createEmptyAnchorElement( modelItem.getAttribute('anchorId'), viewWriter);
+			view: ( modelItem, viewWriter ) => {
+				return createEmptyAnchorElement( modelItem.getAttribute( 'anchorId' ), viewWriter );
 			}
-		});
+		} );
 
 		editor.conversion.for( 'editingDowncast' )
 			.attributeToElement( { model: 'anchorId', view: ( id, conversionApi ) => {
-				if (id) {
+				if ( id ) {
 					return createAnchorElement( ensureSafeUrl( id ), conversionApi );
 				}
 				else {
 					return null;
 				}
 			} } );
-		editor.conversion.for('editingDowncast').elementToElement({
+		editor.conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'anchor',
-			view: (modelItem, viewWriter) => {
-				return createEmptyPlaceholderAnchorElement( modelItem.getAttribute('anchorId'), viewWriter, true);
+			view: ( modelItem, viewWriter ) => {
+				return createEmptyPlaceholderAnchorElement( modelItem.getAttribute( 'anchorId' ), viewWriter, true );
 			}
-		});
+		} );
 
 		editor.conversion.for( 'upcast' )
 			.elementToAttribute( {
 				view: {
 					name: 'a',
 					attributes: {
-						id: true,
+						id: true
 					}
 				},
 				model: {
 					key: 'anchorId',
 					value: viewElement => {
-						if (viewElement.childCount < 1) {
+						if ( viewElement.childCount < 1 ) {
 							return;
 						}
 
-						if (viewElement.hasAttribute('href')) {
+						if ( viewElement.hasAttribute( 'href' ) ) {
 							return;
 						}
 
@@ -139,19 +137,19 @@ export default class AnchorEditing extends Plugin {
 					}
 				}
 			} );
-		
+
 		editor.conversion.for( 'upcast' )
 			.elementToAttribute( {
 				view: {
 					name: 'a',
 					attributes: {
-						name: true,
+						name: true
 					}
 				},
 				model: {
 					key: 'anchorId',
 					value: viewElement => {
-						if (viewElement.childCount < 1) {
+						if ( viewElement.childCount < 1 ) {
 							return;
 						}
 
@@ -165,18 +163,18 @@ export default class AnchorEditing extends Plugin {
 				view: {
 					name: 'a',
 					attributes: {
-						id: true,
+						id: true
 					}
 				},
 				model: ( viewElement, { writer } ) => {
-					if (viewElement.childCount > 0) {
+					if ( viewElement.childCount > 0 ) {
 						return;
 					}
 
-					return writer.createElement( 'anchor', { anchorId: viewElement.getAttribute('id') } );
+					return writer.createElement( 'anchor', { anchorId: viewElement.getAttribute( 'id' ) } );
 				}
 			} );
-		
+
 		editor.conversion.for( 'upcast' )
 			.elementToElement( {
 				view: {
@@ -186,11 +184,11 @@ export default class AnchorEditing extends Plugin {
 					}
 				},
 				model: ( viewElement, { writer } ) => {
-					if (viewElement.childCount > 0) {
+					if ( viewElement.childCount > 0 ) {
 						return;
 					}
 
-					return writer.createElement( 'anchor', { anchorId: viewElement.getAttribute('name') } );
+					return writer.createElement( 'anchor', { anchorId: viewElement.getAttribute( 'name' ) } );
 				}
 			} );
 
