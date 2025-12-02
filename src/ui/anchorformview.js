@@ -7,21 +7,17 @@
  * @module anchor/ui/anchorformview
  */
 
-import { View } from 'ckeditor5/src/ui';
-import { ViewCollection } from 'ckeditor5/src/ui';
-
-import { ButtonView } from 'ckeditor5/src/ui';
-import { SwitchButtonView } from 'ckeditor5/src/ui';
-
-import { LabeledFieldView } from 'ckeditor5/src/ui';
-import { createLabeledInputText } from 'ckeditor5/src/ui';
-import { injectCssTransitionDisabler } from 'ckeditor5/src/ui';
-
-import { submitHandler } from 'ckeditor5/src/ui';
-import { FocusTracker } from 'ckeditor5/src/utils';
-import { FocusCycler } from 'ckeditor5/src/ui';
-import { KeystrokeHandler } from 'ckeditor5/src/utils';
-
+import {
+	ButtonView,
+	createLabeledInputText,
+	FocusCycler,
+	LabeledFieldView,
+	submitHandler,
+	SwitchButtonView,
+	View,
+	ViewCollection
+} from 'ckeditor5/src/ui';
+import { FocusTracker, KeystrokeHandler } from 'ckeditor5/src/utils';
 import { IconCancel, IconCheck } from '@ckeditor/ckeditor5-icons';
 import '../../theme/anchorform.css';
 import '@ckeditor/ckeditor5-ui/theme/components/responsive-form/responsiveform.css';
@@ -152,8 +148,6 @@ export default class AnchorFormView extends View {
 
 			children: this.children
 		} );
-
-		injectCssTransitionDisabler( this );
 	}
 
 	/**
