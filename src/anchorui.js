@@ -9,16 +9,19 @@
 
 import { Plugin } from 'ckeditor5/src/core';
 import { ClickObserver } from 'ckeditor5/src/engine';
-import { addAnchorProtocolIfApplicable, isAnchorElement, LINK_KEYSTROKE } from './utils';
-
-import { ContextualBalloon } from 'ckeditor5/src/ui';
-
-import { clickOutsideHandler } from 'ckeditor5/src/ui';
-
-import { ButtonView } from 'ckeditor5/src/ui';
+import {
+	addAnchorProtocolIfApplicable,
+	isAnchorElement,
+	LINK_KEYSTROKE
+} from './utils';
+import {
+	ButtonView,
+	clickOutsideHandler,
+	ContextualBalloon,
+	CssTransitionDisablerMixin
+} from 'ckeditor5/src/ui';
 import AnchorFormView from './ui/anchorformview';
 import AnchorActionsView from './ui/anchoractionsview';
-
 import anchorIcon from '../theme/icons/anchor.svg';
 
 const VISUAL_SELECTION_MARKER_NAME = 'anchor-ui';
@@ -163,7 +166,7 @@ export default class AnchorUI extends Plugin {
 		const anchorCommand = editor.commands.get( 'anchor' );
 		const defaultProtocol = editor.config.get( 'anchor.defaultProtocol' );
 
-		const formView = new AnchorFormView( editor.locale, anchorCommand );
+		const formView = new ( CssTransitionDisablerMixin( AnchorFormView ) )( editor.locale, anchorCommand );
 
 		formView.urlInputView.fieldView.bind( 'value' ).to( anchorCommand, 'value' );
 

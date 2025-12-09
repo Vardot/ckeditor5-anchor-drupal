@@ -8,7 +8,6 @@
  */
 
 import { ObservableMixin } from 'ckeditor5/src/utils';
-import { mix } from 'ckeditor5/src/utils';
 
 /**
  * Helper class that stores manual decorators with observable {@link module:anchor/utils~ManualDecorator#value}
@@ -17,7 +16,7 @@ import { mix } from 'ckeditor5/src/utils';
  *
  * @mixes module:utils/observablemixin~ObservableMixin
  */
-export default class ManualDecorator {
+export default class ManualDecorator extends ObservableMixin() {
 	/**
 	 * Creates a new instance of {@link module:anchor/utils~ManualDecorator}.
 	 *
@@ -30,6 +29,8 @@ export default class ManualDecorator {
 	 * @param {Boolean} [config.defaultValue] Controls whether the decorator is "on" by default.
 	 */
 	constructor( { id, label, attributes, defaultValue } ) {
+		super();
+
 		/**
 		 * An ID of a manual decorator which is the name of the attribute in the model, for example: 'anchorManualDecorator0'.
 		 *
@@ -68,5 +69,3 @@ export default class ManualDecorator {
 		this.attributes = attributes;
 	}
 }
-
-mix( ManualDecorator, ObservableMixin );
