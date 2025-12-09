@@ -148,7 +148,7 @@ export default class AnchorUI extends Plugin {
 			this._hideUI();
 		} );
 
-		// Show the LinkUI actions view the "Link" button is clicked.
+		// Show the LinkUI actions view when the "Link" button is clicked.
 		this.listenTo( actionsView, 'editanchorlink', () => {
 			this.linkPlugin._addActionsView();
 			this._hideUI();
