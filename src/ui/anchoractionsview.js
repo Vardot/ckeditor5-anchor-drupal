@@ -10,6 +10,7 @@
 import { ButtonView, FocusCycler, View, ViewCollection } from 'ckeditor5/src/ui';
 import { FocusTracker, KeystrokeHandler } from 'ckeditor5/src/utils';
 import unanchorIcon from '../../theme/icons/unanchor.svg';
+import linkIcon from '../../theme/icons/link.svg';
 import { IconPencil } from '@ckeditor/ckeditor5-icons';
 import '../../theme/anchoractions.css';
 import '@ckeditor/ckeditor5-ui/theme/components/responsive-form/responsiveform.css';
@@ -60,6 +61,13 @@ export default class AnchorActionsView extends View {
 		this.editButtonView = this._createButton( t( 'Edit anchor' ), IconPencil, 'edit' );
 
 		/**
+		 * The edit link button view.
+		 *
+		 * @member {module:ui/button/buttonview~ButtonView}
+		 */
+		this.linkButtonView = this._createButton( t( 'Edit link'), linkIcon, 'editanchorlink');
+
+		/**
 		 * A collection of views that can be focused in the view.
 		 *
 		 * @readonly
@@ -104,7 +112,8 @@ export default class AnchorActionsView extends View {
 
 			children: [
 				this.editButtonView,
-				this.unanchorButtonView
+				this.unanchorButtonView,
+				this.linkButtonView
 			]
 		} );
 	}
@@ -117,7 +126,8 @@ export default class AnchorActionsView extends View {
 
 		const childViews = [
 			this.editButtonView,
-			this.unanchorButtonView
+			this.unanchorButtonView,
+			this.linkButtonView
 		];
 
 		childViews.forEach( v => {
@@ -173,4 +183,10 @@ export default class AnchorActionsView extends View {
  * Fired when the {@link #unanchorButtonView} is clicked.
  *
  * @event unanchor
+ */
+
+/**
+ * Fired when the {@link #linkButtonView} is clicked.
+ *
+ * @event editanchorlink
  */
