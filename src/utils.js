@@ -8,7 +8,7 @@
  */
 
 import { upperFirst } from 'es-toolkit/string';
-import { toWidget } from "ckeditor5/src/widget";
+import { toWidget } from 'ckeditor5/src/widget';
 
 const ATTRIBUTE_WHITESPACES = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
 const SAFE_URL = /^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
@@ -49,7 +49,7 @@ export function isAnchorElement( node ) {
 export function createAnchorElement( id, { writer } ) {
 	// Priority 5 - https://github.com/ckeditor/ckeditor5-anchor/issues/121.
 	const anchorElement = writer.createAttributeElement( 'a', { id }, { priority: 5 } );
-	writer.addClass("ck-anchor", anchorElement);
+	writer.addClass( 'ck-anchor', anchorElement );
 	writer.setCustomProperty( 'anchor', true, anchorElement );
 
 	return anchorElement;
@@ -64,9 +64,9 @@ export function createAnchorElement( id, { writer } ) {
  */
 export function createEmptyAnchorElement( id, { writer } ) {
 	let anchorElement = null;
-	anchorElement = writer.createEmptyElement( 'a', { id });
+	anchorElement = writer.createEmptyElement( 'a', { id } );
 
-	writer.addClass("ck-anchor", anchorElement);
+	writer.addClass( 'ck-anchor', anchorElement );
 	writer.setCustomProperty( 'anchor', true, anchorElement );
 
 	return anchorElement;
@@ -80,10 +80,10 @@ export function createEmptyAnchorElement( id, { writer } ) {
  * @returns {module:engine/view/emptyelement~EmptyElement}
  */
 export function createEmptyPlaceholderAnchorElement( anchorId, { writer } ) {
-	const anchorElement = writer.createContainerElement('span', {
-		class: 'ck-anchor-placeholder',
-	}, [writer.createText(`[INVISIBLE ANCHOR: ${anchorId}]`)]);
-	return toWidget(anchorElement, writer );
+	const anchorElement = writer.createContainerElement( 'span', {
+		class: 'ck-anchor-placeholder'
+	}, [ writer.createText( `[INVISIBLE ANCHOR: ${ anchorId }]` ) ] );
+	return toWidget( anchorElement, writer );
 }
 
 /**

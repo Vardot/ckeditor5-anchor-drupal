@@ -9,9 +9,7 @@
 
 import { Command } from 'ckeditor5/src/core';
 import { findAttributeRange } from 'ckeditor5/src/typing';
-import { toMap } from 'ckeditor5/src/utils';
-import { Collection } from 'ckeditor5/src/utils';
-import { first } from 'ckeditor5/src/utils';
+import { Collection, first, toMap } from 'ckeditor5/src/utils';
 import AutomaticDecorators from './utils/automaticdecorators';
 import { isImageAllowed } from './utils';
 
@@ -44,8 +42,8 @@ export default class AnchorCommand extends Command {
 		this.manualDecorators = new Collection();
 
 		/**
-		 * An instance of the helper that ties together all {@link module:anchor/anchor~AnchorDecoratorAutomaticDefinition}
-		 * that are used by the {@ganchor features/anchor anchor} and the {@ganchor features/image#anchoring-images anchoring images} features.
+		 * An instance of the helper that ties together all {@link module:anchor/anchor~AnchorDecoratorAutomaticDefinition} that
+		 * are used by the {@ganchor features/anchor anchor} and the {@ganchor features/image#anchoring-images anchoring images} features.
 		 *
 		 * @readonly
 		 * @type {module:anchor/utils~AutomaticDecorators}
@@ -105,9 +103,9 @@ export default class AnchorCommand extends Command {
 	 * {@ganchor framework/guides/architecture/editing-engine#text-attributes text attributes} brought by
 	 * {@link module:anchor/utils~ManualDecorator manual anchor decorators}.
 	 *
-	 * Text attribute names in the model correspond to the entries in the {@link module:anchor/anchor~AnchorConfig#decorators configuration}.
-	 * For every decorator configured, a model text attribute exists with the "anchor" prefix. For example, a `'anchorMyDecorator'` attribute
-	 * corresponds to `'myDecorator'` in the configuration.
+	 * Text attribute names in the model correspond to the entries in the
+	 * {@link module:anchor/anchor~AnchorConfig#decorators configuration}. For every decorator configured, a model text attribute exists
+	 * with the "anchor" prefix. For example, a `'anchorMyDecorator'` attribute corresponds to `'myDecorator'` in the configuration.
 	 *
 	 * To learn more about anchor decorators, check out the {@link module:anchor/anchor~AnchorConfig#decorators `config.anchor.decorators`}
 	 * documentation.
@@ -189,7 +187,7 @@ export default class AnchorCommand extends Command {
 				// So, if `id` is empty, do not create text node.
 				else if ( id !== '' ) {
 					const attributes = toMap( selection.getAttributes() );
-					attributes.set('anchorId', id);
+					attributes.set( 'anchorId', id );
 
 					truthyManualDecorators.forEach( item => {
 						attributes.set( item, true );
@@ -207,12 +205,12 @@ export default class AnchorCommand extends Command {
 				[ 'anchorId', ...truthyManualDecorators, ...falsyManualDecorators ].forEach( item => {
 					writer.removeSelectionAttribute( item );
 				} );
-			} else if (selection.getSelectedElement()?.name === 'anchor') {
+			} else if ( selection.getSelectedElement()?.name === 'anchor' ) {
 				// Replace an invisible anchor.
-				const anchor = writer.createElement('anchor', {
+				const anchor = writer.createElement( 'anchor', {
 					anchorId: id
-				});
-				model.insertObject(anchor, null, null, { setSelection: 'on' });
+				} );
+				model.insertObject( anchor, null, null, { setSelection: 'on' } );
 			} else {
 				// If selection has non-collapsed ranges, we change attribute on nodes inside those ranges
 				// omitting nodes where the `anchorId` attribute is disallowed.

@@ -24,7 +24,7 @@ export default class Anchor extends Plugin {
 	 * @inheritDoc
 	 */
 	static get requires() {
-		return [ AnchorEditing, AnchorUI];
+		return [ AnchorEditing, AnchorUI ];
 	}
 
 	/**

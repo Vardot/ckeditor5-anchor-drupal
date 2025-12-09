@@ -9,10 +9,9 @@
 
 import { ButtonView } from 'ckeditor5/src/button';
 import { Plugin } from 'ckeditor5/src/core';
-import { Image } from 'ckeditor5/src/image';
+import { Image, isImageWidget } from 'ckeditor5/src/image';
 import { AnchorUI } from './anchorui';
 import { AnchorEditing } from './anchorediting';
-import { isImageWidget } from 'ckeditor5/src/image';
 import { LINK_KEYSTROKE } from './utils';
 
 import anchorIcon from '../theme/icons/anchor.svg';
