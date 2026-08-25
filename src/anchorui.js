@@ -131,7 +131,6 @@ export default class AnchorUI extends Plugin {
 		const actionsView = new AnchorActionsView( editor.locale );
 		const anchorCommand = editor.commands.get( 'anchor' );
 		const unanchorCommand = editor.commands.get( 'unanchor' );
-		const linkCommand = editor.commands.get( 'link' );
 
 		actionsView.bind( 'id' ).to( anchorCommand, 'value' );
 		actionsView.editButtonView.bind( 'isEnabled' ).to( anchorCommand );
@@ -152,7 +151,7 @@ export default class AnchorUI extends Plugin {
 		this.listenTo( actionsView, 'editanchorlink', () => {
 			this.linkPlugin._addActionsView();
 			this._hideUI();
-		});
+		} );
 
 		// Close the panel on esc key press when the **actions have focus**.
 		actionsView.keystrokes.set( 'Esc', ( data, cancel ) => {
@@ -679,8 +678,8 @@ export default class AnchorUI extends Plugin {
 	_isSelectedLinkedAnchor() {
 		const selection = this.editor.model.document.selection;
 		return (
-			selection.hasAttribute('anchorId') &&
-			selection.hasAttribute('linkHref')
+			selection.hasAttribute( 'anchorId' ) &&
+			selection.hasAttribute( 'linkHref' )
 		);
 	}
 

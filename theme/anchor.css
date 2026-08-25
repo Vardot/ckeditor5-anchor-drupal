@@ -4,7 +4,21 @@
  */
 
 /*
- * Note: This file should contain the wireframe styles only. But since there are no such styles,
- * it acts as a message to the builder telling that it should look for the corresponding styles
- * **in the theme** when compiling the editor.
+ * The label of an anchor that carries no text of its own. It is drawn from the
+ * `data-anchor-id` attribute rather than written into the document, so a site
+ * can reword or restyle it by overriding `content` in its own CSS.
  */
+.ck-anchor-placeholder::before {
+	content: "[INVISIBLE ANCHOR: " attr(data-anchor-id) "]";
+}
+
+/*
+ * An anchor holding that placeholder is already labelled by it, so it drops the
+ * flag icon the other anchors carry and is not marked twice. The selectors match
+ * the ones in `anchoractions.css` that set the icon, so that they override them.
+ */
+div[contenteditable=true] .ck-anchor:has(.ck-anchor-placeholder),
+div[contenteditable=false] .ck-anchor:has(.ck-anchor-placeholder) {
+	background-image: none;
+	padding-left: 0;
+}
