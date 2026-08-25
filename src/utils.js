@@ -34,8 +34,8 @@ export const LINK_KEYSTROKE = 'Ctrl+M';
  */
 export function isAnchorElement( node ) {
 	return (
-		(node.is('attributeElement') && !!node.getCustomProperty( 'anchor' )) ||
-		(node.is('attributeElement', 'a') && node.hasAttribute('id'))
+		( node.is( 'attributeElement' ) && !!node.getCustomProperty( 'anchor' ) ) ||
+		( node.is( 'attributeElement', 'a' ) && node.hasAttribute( 'id' ) )
 	);
 }
 
@@ -44,12 +44,19 @@ export function isAnchorElement( node ) {
  *
  * @param {String} id
  * @param {module:engine/conversion/downcastdispatcher~DowncastConversionApi} conversionApi
+ * @param {Boolean} [editing] Whether the element is built for the editing view.
  * @returns {module:engine/view/attributeelement~AttributeElement}
  */
-export function createAnchorElement( id, { writer } ) {
+export function createAnchorElement( id, { writer }, editing = false ) {
 	// Priority 5 - https://github.com/ckeditor/ckeditor5-anchor/issues/121.
 	const anchorElement = writer.createAttributeElement( 'a', { id }, { priority: 5 } );
-	writer.addClass( 'ck-anchor', anchorElement );
+
+	// `ck-anchor` only styles the anchor inside the editor, so it stays out of
+	// the data and never reaches the saved content.
+	if ( editing ) {
+		writer.addClass( 'ck-anchor', anchorElement );
+	}
+
 	writer.setCustomProperty( 'anchor', true, anchorElement );
 
 	return anchorElement;
@@ -62,11 +69,14 @@ export function createAnchorElement( id, { writer } ) {
  * @param {module:engine/conversion/downcastdispatcher~DowncastConversionApi} conversionApi
  * @returns {module:engine/view/emptyelement~EmptyElement}
  */
-export function createEmptyAnchorElement( id, { writer } ) {
+export function createEmptyAnchorElement( id, { writer }, editing = false ) {
 	let anchorElement = null;
 	anchorElement = writer.createEmptyElement( 'a', { id } );
 
-	writer.addClass( 'ck-anchor', anchorElement );
+	if ( editing ) {
+		writer.addClass( 'ck-anchor', anchorElement );
+	}
+
 	writer.setCustomProperty( 'anchor', true, anchorElement );
 
 	return anchorElement;
@@ -80,9 +90,12 @@ export function createEmptyAnchorElement( id, { writer } ) {
  * @returns {module:engine/view/emptyelement~EmptyElement}
  */
 export function createEmptyPlaceholderAnchorElement( anchorId, { writer } ) {
+	// The label is drawn by `theme/anchor.css` from the `data-anchor-id`
+	// attribute, so a site can restyle or reword it in its own CSS.
 	const anchorElement = writer.createContainerElement( 'span', {
-		class: 'ck-anchor-placeholder'
-	}, [ writer.createText( `[INVISIBLE ANCHOR: ${ anchorId }]` ) ] );
+		'class': 'ck-anchor-placeholder',
+		'data-anchor-id': anchorId
+	} );
 	return toWidget( anchorElement, writer );
 }
 

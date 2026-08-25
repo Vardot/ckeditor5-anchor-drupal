@@ -65,7 +65,7 @@ export default class AnchorActionsView extends View {
 		 *
 		 * @member {module:ui/button/buttonview~ButtonView}
 		 */
-		this.linkButtonView = this._createButton( t( 'Edit link'), linkIcon, 'editanchorlink');
+		this.linkButtonView = this._createButton( t( 'Edit link' ), linkIcon, 'editanchorlink' );
 
 		/**
 		 * A collection of views that can be focused in the view.
