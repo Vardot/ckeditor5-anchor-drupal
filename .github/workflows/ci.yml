@@ -1,0 +1,38 @@
+# Builds the CKEditor 5 plugin with Node.js 24 and lints it, with no lockfile
+# committed.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: ['[0-9]+.[0-9]+.x']
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Install, lint and build on Node.js 24
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # `prepare` runs the DLL build (dll:build) as part of the install. The
+      # committed build is removed first, so the check below proves a fresh one.
+      - name: Install and build
+        run: |
+          rm -f build/anchor-drupal.js
+          npm install
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Stylelint
+        run: npm run stylelint
+
+      - name: The build is there
+        run: test -s build/anchor-drupal.js
