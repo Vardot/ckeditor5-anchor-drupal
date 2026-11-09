@@ -14,7 +14,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "engines": {
-    "node": ">= 20.0",
+    "node": ">= 24.0",
     "npm": ">= 7"
   },
   "files": [
@@ -25,27 +25,27 @@
     "ckeditor5-metadata.json"
   ],
   "devDependencies": {
-    "@ckeditor/ckeditor5-autoformat": "~45.2.0",
-    "@ckeditor/ckeditor5-basic-styles": "~45.2.0",
-    "@ckeditor/ckeditor5-block-quote": "~45.2.0",
-    "@ckeditor/ckeditor5-code-block": "~45.2.0",
-    "@ckeditor/ckeditor5-core": "~45.2.0",
-    "@ckeditor/ckeditor5-editor-classic": "~45.2.0",
-    "@ckeditor/ckeditor5-essentials": "~45.2.0",
-    "@ckeditor/ckeditor5-heading": "~45.2.0",
-    "@ckeditor/ckeditor5-html-support": "~45.2.0",
-    "@ckeditor/ckeditor5-image": "~45.2.0",
-    "@ckeditor/ckeditor5-indent": "~45.2.0",
+    "@ckeditor/ckeditor5-autoformat": "^45.2.0",
+    "@ckeditor/ckeditor5-basic-styles": "^45.2.0",
+    "@ckeditor/ckeditor5-block-quote": "^45.2.0",
+    "@ckeditor/ckeditor5-code-block": "^45.2.0",
+    "@ckeditor/ckeditor5-core": "^45.2.0",
+    "@ckeditor/ckeditor5-editor-classic": "^45.2.0",
+    "@ckeditor/ckeditor5-essentials": "^45.2.0",
+    "@ckeditor/ckeditor5-heading": "^45.2.0",
+    "@ckeditor/ckeditor5-html-support": "^45.2.0",
+    "@ckeditor/ckeditor5-image": "^45.2.0",
+    "@ckeditor/ckeditor5-indent": "^45.2.0",
     "@ckeditor/ckeditor5-inspector": "^5.0.0",
-    "@ckeditor/ckeditor5-link": "~45.2.0",
-    "@ckeditor/ckeditor5-list": "~45.2.0",
-    "@ckeditor/ckeditor5-media-embed": "~45.2.0",
+    "@ckeditor/ckeditor5-link": "^45.2.0",
+    "@ckeditor/ckeditor5-list": "^45.2.0",
+    "@ckeditor/ckeditor5-media-embed": "^45.2.0",
     "@ckeditor/ckeditor5-package-tools": "^3.0.1",
-    "@ckeditor/ckeditor5-paragraph": "~45.2.0",
-    "@ckeditor/ckeditor5-table": "~45.2.0",
-    "@ckeditor/ckeditor5-theme-lark": "~45.2.0",
-    "@ckeditor/ckeditor5-upload": "~45.2.0",
-    "ckeditor5": "~45.2.0",
+    "@ckeditor/ckeditor5-paragraph": "^45.2.0",
+    "@ckeditor/ckeditor5-table": "^45.2.0",
+    "@ckeditor/ckeditor5-theme-lark": "^45.2.0",
+    "@ckeditor/ckeditor5-upload": "^45.2.0",
+    "ckeditor5": "^45.2.0",
     "es-toolkit": "^1.39.3",
     "eslint": "^9.39.1",
     "eslint-config-ckeditor5": "^12.2.0",
@@ -56,7 +56,7 @@
     "stylelint-config-ckeditor5": "^12.2.0"
   },
   "peerDependencies": {
-    "ckeditor5": "~45.2.0"
+    "ckeditor5": "^45.2.0"
   },
   "scripts": {
     "dll:build": "ckeditor5-package-tools dll:build",
